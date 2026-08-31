@@ -1,127 +1,135 @@
 # Git Rescue
 
-Git Rescue is a focused, safety-first web app that helps developers recover from common Git mistakes. It asks only the questions that change the answer, then provides copyable commands, plain-language explanations, visible risk levels, and safer alternatives.
+Git Rescue is a fast, safety-first Git and GitHub problem-solving knowledge base. Search in natural language or by command, open a concise guide, and get exact commands, an explanation, visible risk information, and related next steps.
 
-No login, repository access, database, backend, or external API is required. All decision logic runs in the browser.
+The original recovery product remains intact: 42 decision-tree rescue flows still handle ambiguous mistakes such as undoing a pushed commit, recovering a deleted branch, resolving a merge, and using reflog after a reset.
 
-## Features
+Git Rescue uses no AI, login, repository access, database, backend, analytics, or external search service. Its content and search index are local TypeScript data, so ordinary use has no network dependency.
 
-- Deterministic recovery flows for commits, staging, files, branches, merges, rebases, cherry-picks, pushes, resets, and exposed secrets
-- Branching questions for context-sensitive recovery, including pushed vs local commits
-- Dedicated reflog recovery and “I don’t know what I did” emergency mode
-- Searchable local scenario catalog with shareable `/rescue/[scenario]` URLs
-- Copyable terminal commands with transient copy feedback
-- `safe`, `caution`, and `dangerous` command classifications
-- Explicit acknowledgements before dangerous commands can be copied
-- Light and dark themes with system-default detection and local preference persistence
-- Compact Git command reference and command comparisons
-- Responsive and keyboard-accessible interface
+## What is included
 
-## Screenshots
+- 223 canonical Git and GitHub guides across 24 categories
+- 42 existing interactive rescue flows across 11 recovery categories
+- Ranked local search over titles, aliases, keywords, commands, descriptions, and categories
+- Case, punctuation, apostrophe, whitespace, accent, and minor-typo tolerance
+- Keyboard search navigation with Arrow Up, Arrow Down, Enter, Escape, and Command/Control-K focus
+- Shareable `/git/[slug]`, `/github/[slug]`, and existing `/rescue/[slug]` routes
+- Static parameters and individual metadata for every guide
+- Related-guide navigation based on the current category
+- Copyable commands with `safe`, `caution`, and `dangerous` classifications
+- Explicit acknowledgement before dangerous commands can be copied
+- Reflog recovery and “I don’t know what I did” emergency mode
+- Light and dark themes with persisted preference
+- Responsive, accessible, monochrome interface
 
-Screenshots can be added here after the final visual review:
+## Why there is no AI
 
-- `docs/screenshots/home-light.png`
-- `docs/screenshots/rescue-flow-dark.png`
-- `docs/screenshots/mobile-result.png`
+Git commands should be deterministic, reviewable, fast, and available without sending repository context elsewhere. Git Rescue maps thousands of likely phrasings to a curated set of canonical guides. The ranking is predictable, the content is version-controlled, and every destructive recommendation is visible in the dataset and tests.
 
-## Tech stack
+## Search architecture
 
-- Next.js 16 with the App Router
-- React 19 and strict TypeScript
-- Tailwind CSS 4 foundation with a custom monochrome design system
-- Lucide React icons
-- Framer Motion for short question/result transitions
-- Vitest for the rescue engine
+`src/lib/guide-search.ts` normalizes a query and scores local `GuideSearchItem` records. Ranking strongly favors:
 
-## Installation
+1. Exact title
+2. Exact alias
+3. Title or alias prefix/phrase matches
+4. Command matches
+5. Keyword and category matches
+6. Description token matches
+
+Small edit-distance matching is applied only to sufficiently long tokens. Results below a relevance threshold are removed to limit fuzzy noise. `src/data/guides/index.ts` adapts both canonical guides and existing rescue scenarios into the same search index without changing the rescue schema or engine.
+
+## Knowledge-base architecture
+
+```text
+src/
+  app/
+    git/[slug]/                Static Git guide pages
+    github/[slug]/             Static GitHub guide pages
+    guides/                    Search and category directory
+    rescue/[slug]/             Existing interactive rescue pages
+  components/
+    commands/                  Copy UI and safety badges
+    guides/                    Unified search and guide layout
+    rescue/                    Existing picker and decision flow UI
+  data/
+    guides/
+      git/                     Basics, commits, branches, recovery, errors, and more
+      github/                  Repositories, auth, PRs, Actions, CLI, releases, and secrets
+      helpers.ts               Small typed guide authoring helper
+      index.ts                 Catalog, categories, related links, and unified search items
+    rescue-flows.ts            Existing 42 decision trees
+    git-scenarios.ts           Command reference and comparisons
+  lib/
+    guide-search.ts            Pure deterministic search and ranking
+    guide-validation.ts        Dataset integrity checks
+    rescue-engine.ts           Existing pure decision-tree engine
+  types/
+    guides.ts                  Knowledge-base and search types
+    rescue.ts                  Existing rescue-flow types
+```
+
+## Safety system
+
+- `safe`: read-only or very unlikely to destroy work
+- `caution`: changes repository or hosted state but is normally recoverable
+- `dangerous`: can erase local work, remove hosted data, or rewrite history
+
+Dangerous commands require a warning in the data and an explicit checkbox before copy. Git Rescue inspects state before changing it, creates recovery pointers where useful, recommends `git revert` for shared history, and uses `--force-with-lease` instead of an unguarded force push.
+
+Placeholders such as `<file>`, `<branch>`, and `<commit-hash>` must be replaced and reviewed before running a command.
+
+## Adding a guide
+
+1. Choose the narrowest file under `src/data/guides/git` or `src/data/guides/github`.
+2. Add a unique lowercase kebab-case `id`, concise title and description, useful aliases, keywords, commands, and safety level.
+3. Include natural wording, exact error text, and common command names in aliases only when they genuinely describe the same task.
+4. Add a concrete warning to every dangerous command.
+5. Add optional workflow steps, an example, prerequisites, warnings, or notes only when they help at the terminal.
+6. Add a category entry in `src/data/guides/index.ts` only when the new topic cannot fit an existing category.
+7. Run the full validation suite.
+
+Related guides default to nearby guides in the same curated category. An explicit `related` array can override this when a more specific cross-topic relationship is more useful; validation rejects broken references.
+
+## Adding search aliases
+
+Aliases should represent real alternative intent, not keyword stuffing. Good aliases for one commit guide include `how to commit`, `make a commit`, and `git commit`. Do not create duplicate guides for punctuation or minor wording changes; normalization already handles those differences.
+
+## Adding a rescue flow
+
+1. Add a typed `RescueScenario` to `src/data/rescue-flows.ts`.
+2. Use a direct result for an unambiguous fix and question steps only when an answer changes the safe command.
+3. Describe what changes, what remains intact, and whether a remote is affected.
+4. Classify each command and include a warning for destructive commands.
+5. Run the rescue-engine integrity tests.
+
+## Development
 
 Requirements: Node.js 22.13 or newer and npm.
 
 ```bash
 npm install
-```
-
-## Development
-
-```bash
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Useful checks:
+## Testing and validation
 
 ```bash
 npm test
 npm run typecheck
 npm run lint
-```
-
-## Build
-
-```bash
 npm run build
-npm start
 ```
 
-The project uses standard Next.js build commands and is ready to import into Vercel. Nothing in the repository performs deployment automatically.
+Tests cover query normalization, exact and fuzzy ranking, aliases, commands, categories, required search examples, invalid searches, duplicate IDs, routes, related references, dangerous-command warnings, and backward compatibility of the rescue engine.
 
-## Project structure
+## Production build and deployment preparation
 
-```text
-src/
-  app/                       Routes, metadata, and global styles
-    rescue/[slug]/           Shareable rescue result flows
-  components/
-    commands/                Command blocks and safety badges
-    layout/                  Header and footer
-    rescue/                  Search/picker and decision flow UI
-    ui/                      Theme preference control
-  data/
-    rescue-flows.ts          Scenario decision trees and recovery content
-    git-scenarios.ts         Command reference and comparisons
-  lib/
-    rescue-engine.ts         Pure decision-tree navigation
-    rescue-engine.test.ts    Engine and flow-integrity tests
-  types/
-    rescue.ts                Shared flow schema
-```
+`npm run build` creates the production Next.js application and statically generates canonical guide and rescue routes. `npm start` serves the result locally.
 
-## How rescue flows work
-
-Each scenario declares a `startStepId` and a map of steps. A step is either:
-
-- a question with options pointing to the next step; or
-- a result containing commands, effects, warnings, and explanatory notes.
-
-The engine in `src/lib/rescue-engine.ts` is intentionally independent of React. It starts flows, validates transitions, moves backward, restarts, and derives the highest safety level of a result.
-
-## Adding a new rescue scenario
-
-1. Add a typed `RescueScenario` to `src/data/rescue-flows.ts`.
-2. Include realistic search keywords and the narrowest appropriate category.
-3. Use a direct result for a single unambiguous fix; use question steps only when an answer changes the safe command.
-4. Classify every command and add a concrete warning to destructive commands.
-5. Describe what changes, what stays intact, and whether a remote is affected.
-6. Run `npm test`; the integrity test verifies every configured transition.
-
-## Safety philosophy
-
-Git Rescue prefers preserving information over shortening instructions:
-
-- shared history is reverted rather than casually reset;
-- recovery branches are created before destructive history movement;
-- read-only inspection comes before mutation;
-- `--force-with-lease` is explained instead of recommending `--force`;
-- secret rotation is mandatory after credential exposure; deleting a file never claims to secure the old secret;
-- uncommitted changes erased by `reset --hard` are never described as reliably recoverable.
-
-Git Rescue provides educational guidance. Users remain responsible for reviewing repository state and adapting placeholders before running a command.
-
-## Contributing
-
-Keep changes focused on deterministic Git recovery. New flows should be technically verifiable, explain risk in plain language, include engine-safe transitions, and avoid dependencies on repository uploads or external services. Please run all checks before opening a contribution.
+The repository contains no deployment automation, hosting configuration, remote creation, or GitHub connection. Choose and configure a hosting provider only as a separate, explicit deployment step.
 
 ## License
 
