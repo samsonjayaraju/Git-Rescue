@@ -1,10 +1,12 @@
 import { ArrowRight, Check, Eye, GitBranch, History, LockKeyhole, MousePointer2, ShieldCheck, Terminal } from 'lucide-react';
 import Link from 'next/link';
 import { SafetyBadge } from '@/components/commands/safety-badge';
+import { GuideSearch } from '@/components/guides/guide-search';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { SiteHeader } from '@/components/layout/site-header';
 import { RescuePicker } from '@/components/rescue/rescue-picker';
 import { commandComparisons, gitReference } from '@/data/git-scenarios';
+import { guideCategories, knowledgeGuides } from '@/data/guides';
 import { rescueScenarios } from '@/data/rescue-flows';
 
 const popular = rescueScenarios.filter((scenario) => scenario.popular && !scenario.emergency).slice(0, 6);
@@ -14,35 +16,35 @@ export default function Home() {
     <>
       <SiteHeader />
       <main>
-        <section id="top" className="hero-shell">
+        <section id="top" className="search-hero wide-section">
           <div className="hero-copy">
-            <div className="eyebrow"><span className="status-dot" /> Safety-first Git recovery</div>
-            <h1>You broke Git.<br />We can <em>fix it.</em></h1>
-            <p>Answer a few questions and get the safest Git command for your situation.</p>
-            <div className="hero-actions">
-              <Link className="primary-button" href="#rescue">Fix my Git <ArrowRight size={17} /></Link>
-              <Link className="secondary-button" href="#common">Browse fixes</Link>
-            </div>
-            <p className="privacy-note"><LockKeyhole size={13} /> No login. No repo access. Nothing leaves your browser.</p>
+            <div className="eyebrow"><span className="status-dot" /> {knowledgeGuides.length} Git &amp; GitHub guides · {rescueScenarios.length} rescue flows</div>
+            <h1>You broke Git.<br />Let’s find <em>the fix.</em></h1>
+            <p>Search Git or GitHub and get the exact command, explanation, and safety information you need.</p>
+            <p className="privacy-note"><LockKeyhole size={13} /> No AI. No login. No repository access.</p>
           </div>
-          <div className="terminal-preview" aria-label="Example Git rescue command">
-            <div className="terminal-label"><span>Lost a commit?</span><span className="safe-label">Safe</span></div>
-            <code><span>$</span> git reflog</code>
-            <div className="terminal-result"><span>abc123</span> HEAD@{'{0}'}: reset: moving to HEAD~2<br /><strong>def456</strong> HEAD@{'{1}'}: commit: Add payment page</div>
-            <div className="terminal-next"><span>Recover it safely</span><code>git switch -c recovered-work def456</code></div>
-          </div>
+          <GuideSearch />
         </section>
 
-        <section id="rescue" className="rescue-section section-shell">
-          <div className="section-heading"><span>Start here</span><h2>What went wrong?</h2><p>Choose the closest match. We’ll only ask what matters.</p></div>
-          <RescuePicker compact />
+        <section className="home-categories wide-section">
+          <div className="split-heading"><div><span>Browse the library</span><h2>Start with the topic.</h2></div><p>Git fundamentals, GitHub workflows, troubleshooting, and safety-first recovery in one local reference.</p></div>
+          <div className="home-category-grid">{guideCategories.slice(0, 12).map((category) => {
+            const count = knowledgeGuides.filter((guide) => guide.category === category.id).length;
+            return <Link href={`/guides#${category.id}`} key={category.id}><span>{String(count).padStart(2, '0')}</span><div><h3>{category.label}</h3><p>{category.description}</p></div><ArrowRight size={15} /></Link>;
+          })}</div>
         </section>
 
         <section id="common" className="common-section wide-section">
-          <div className="split-heading"><div><span>Common fixes</span><h2>Start with the familiar.</h2></div><p>The most common Git mistakes, each with a deterministic recovery path.</p></div>
+          <div className="split-heading"><div><span>Recovery tools</span><h2>When something<br />already went wrong.</h2></div><p>The original decision-tree rescue tools remain available, with safe paths based on whether work was pushed or should be preserved.</p></div>
           <div className="common-grid">
             {popular.map((scenario, index) => <Link href={`/rescue/${scenario.id}`} key={scenario.id}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{scenario.shortTitle}</h3><p>{scenario.description}</p></div><ArrowRight size={18} /></Link>)}
           </div>
+          <Link className="browse-all" href="/rescue">Browse all {rescueScenarios.length} rescue flows <ArrowRight size={14} /></Link>
+        </section>
+
+        <section id="rescue" className="rescue-section section-shell">
+          <div className="section-heading"><span>Guided rescue</span><h2>Not sure what to search?</h2><p>Choose the closest mistake. We’ll only ask what changes the safest answer.</p></div>
+          <RescuePicker compact />
         </section>
 
         <section className="how-section section-shell">

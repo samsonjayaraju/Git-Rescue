@@ -10,8 +10,9 @@ export function SiteHeader() {
         Git Rescue
       </Link>
       <nav aria-label="Main navigation">
-        <Link href="/#common">Common fixes</Link>
-        <Link href="/#guide">Git guide</Link>
+        <Link href="/guides">Browse guides</Link>
+        <Link href="/rescue">Recovery</Link>
+        <Link href="/#guide">Command reference</Link>
         <ThemeToggle />
       </nav>
     </header>
