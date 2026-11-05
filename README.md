@@ -134,3 +134,11 @@ The repository contains no deployment automation, hosting configuration, remote 
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## All Git Commands
+
+The separate `/commands` page is available beside **Command reference** in the main navigation. It keeps the homepage reference intact and provides an alphabetical catalog, local search by command or task, category/type filters, expandable syntax, existing guide examples, and links to the installed and online manuals. Dangerous examples reuse the existing acknowledgement-before-copy control.
+
+`src/data/git-command-catalog.json` records all 156 `git-*` command entries (including the `stage` alias and optional helpers) from the [Git v2.54.0 command index](https://github.com/git/git/blob/v2.54.0/command-list.txt). Command signatures were checked against that release’s `Documentation/git-*.adoc` synopsis sections; short descriptions are written for this app. The catalog is a versioned snapshot, not a promise that every command is installed on every machine. It excludes conceptual guides and third-party extensions. Full option documentation is linked per command, and task examples come from the existing curated guide library.
+
+When updating the snapshot, compare command names with the target release’s index, review syntax and descriptions, update the version/count in the page and catalog test, and rerun validation. Keep safety attached to individual examples rather than assigning one risk level to every variation of a command.

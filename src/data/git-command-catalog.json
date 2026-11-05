@@ -1,0 +1,1094 @@
+[
+  {
+    "name": "add",
+    "description": "Stage selected file changes for the next commit.",
+    "category": "files",
+    "advanced": false,
+    "syntax": "git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [--patch | -p]\n\t[--edit | -e] [--[no-]all | -A | --[no-]ignore-removal | [--update | -u]] [--sparse]\n\t[--intent-to-add | -N] [--refresh] [--ignore-errors] [--ignore-missing] [--renormalize]\n\t[--chmod=(+|-)x] [--pathspec-from-file=<file> [--pathspec-file-nul]]\n\t[--] [<pathspec>...]"
+  },
+  {
+    "name": "am",
+    "description": "Turn emailed patches into commits on your branch.",
+    "category": "email",
+    "advanced": false,
+    "syntax": "git am [--signoff] [--keep] [--[no-]keep-cr] [--[no-]utf8] [--[no-]verify]\n\t [--[no-]3way] [--interactive] [--committer-date-is-author-date]\n\t [--ignore-date] [--ignore-space-change | --ignore-whitespace]\n\t [--whitespace=<action>] [-C<n>] [-p<n>] [--directory=<dir>]\n\t [--exclude=<path>] [--include=<path>] [--reject] [-q | --quiet]\n\t [--[no-]scissors] [-S[<keyid>]] [--patch-format=<format>]\n\t [--quoted-cr=<action>]\n\t [--empty=(stop|drop|keep)]\n\t [(<mbox> | <Maildir>)...]\ngit am (--continue | --skip | --abort | --quit | --retry | --show-current-patch[=(diff|raw)] | --allow-empty)"
+  },
+  {
+    "name": "annotate",
+    "description": "Inspect the commit responsible for each line, in an older output format.",
+    "category": "history",
+    "advanced": false,
+    "syntax": "git annotate [<options>] [<rev-opts>] [<rev>] [--] <file>"
+  },
+  {
+    "name": "apply",
+    "description": "Apply a patch to files or the staging area without creating a commit.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git apply [--stat] [--numstat] [--summary] [--check]\n\t  [--index | --intent-to-add] [--3way] [--ours | --theirs | --union]\n\t  [--apply] [--no-add] [--build-fake-ancestor=<file>] [-R | --reverse]\n\t  [--allow-binary-replacement | --binary] [--reject] [-z]\n\t  [-p<n>] [-C<n>] [--inaccurate-eof] [--recount] [--cached]\n\t  [--ignore-space-change | --ignore-whitespace]\n\t  [--whitespace=(nowarn|warn|fix|error|error-all)]\n\t  [--exclude=<path>] [--include=<path>] [--directory=<root>]\n\t  [--verbose | --quiet] [--unsafe-paths] [--allow-empty] [<patch>...]"
+  },
+  {
+    "name": "archimport",
+    "description": "Bring a GNU Arch project and its history into Git.",
+    "category": "integrations",
+    "advanced": false,
+    "syntax": "git archimport [-h] [-v] [-o] [-a] [-f] [-T] [-D <depth>] [-t <tempdir>]\n\t       <archive>/<branch>[:<git-branch>]..."
+  },
+  {
+    "name": "archive",
+    "description": "Package a committed tree as a tar or zip archive.",
+    "category": "remotes",
+    "advanced": false,
+    "syntax": "git archive [--format=<fmt>] [--list] [--prefix=<prefix>/] [<extra>]\n\t      [-o <file> | --output=<file>] [--worktree-attributes]\n\t      [--remote=<repo> [--exec=<git-upload-archive>]] <tree-ish>\n\t      [<path>...]"
+  },
+  {
+    "name": "backfill",
+    "description": "Download missing historical blobs in a partial clone.",
+    "category": "remotes",
+    "advanced": false,
+    "syntax": "git backfill [--min-batch-size=<n>] [--[no-]sparse]"
+  },
+  {
+    "name": "bisect",
+    "description": "Find the commit that introduced a bug by testing progressively smaller ranges.",
+    "category": "history",
+    "advanced": false,
+    "syntax": "git bisect start [--term-(bad|new)=<term-new> --term-(good|old)=<term-old>]\n\t\t   [--no-checkout] [--first-parent] [<bad> [<good>...]] [--] [<pathspec>...]\ngit bisect (bad|new|<term-new>) [<rev>]\ngit bisect (good|old|<term-old>) [<rev>...]\ngit bisect terms [--term-(good|old) | --term-(bad|new)]\ngit bisect skip [(<rev>|<range>)...]\ngit bisect next\ngit bisect reset [<commit>]\ngit bisect (visualize|view)\ngit bisect replay <logfile>\ngit bisect log\ngit bisect run <cmd> [<arg>...]\ngit bisect help"
+  },
+  {
+    "name": "blame",
+    "description": "Find who last changed each line and which commit contains that change.",
+    "category": "history",
+    "advanced": false,
+    "syntax": "git blame [-c] [-b] [-l] [--root] [-t] [-f] [-n] [-s] [-e] [-p] [-w] [--incremental]\n\t  [-L <range>] [-S <revs-file>] [-M] [-C] [-C] [-C] [--since=<date>]\n\t  [--ignore-rev <rev>] [--ignore-revs-file <file>]\n\t  [--color-lines] [--color-by-age] [--progress] [--abbrev=<n>]\n\t  [ --contents <file> ] [<rev> | --reverse <rev>..<rev>] [--] <file>"
+  },
+  {
+    "name": "branch",
+    "description": "List, create, rename, or delete branch pointers.",
+    "category": "branches",
+    "advanced": false,
+    "syntax": "git branch [--color[=<when>] | --no-color] [--show-current]\n\t   [-v [--abbrev=<n> | --no-abbrev]]\n\t   [--column[=<options>] | --no-column] [--sort=<key>]\n\t   [--merged [<commit>]] [--no-merged [<commit>]]\n\t   [--contains [<commit>]] [--no-contains [<commit>]]\n\t   [--points-at <object>] [--format=<format>]\n\t   [(-r|--remotes) | (-a|--all)]\n\t   [--list] [<pattern>...]\ngit branch [--track[=(direct|inherit)] | --no-track] [-f]\n\t   [--recurse-submodules] <branch-name> [<start-point>]\ngit branch (--set-upstream-to=<upstream>|-u <upstream>) [<branch-name>]\ngit branch --unset-upstream [<branch-name>]\ngit branch (-m|-M) [<old-branch>] <new-branch>\ngit branch (-c|-C) [<old-branch>] <new-branch>\ngit branch (-d|-D) [-r] <branch-name>...\ngit branch --edit-description [<branch-name>]"
+  },
+  {
+    "name": "bugreport",
+    "description": "Collect environment information to help report a Git problem.",
+    "category": "setup",
+    "advanced": false,
+    "syntax": "git bugreport [(-o | --output-directory) <path>]\n\t\t[(-s | --suffix) <format> | --no-suffix]\n\t\t[--diagnose[=<mode>]]"
+  },
+  {
+    "name": "bundle",
+    "description": "Transfer repository objects and references in a single portable file.",
+    "category": "remotes",
+    "advanced": false,
+    "syntax": "git bundle create [-q | --quiet | --progress]\n\t\t    [--version=<version>] <file> <git-rev-list-args>\ngit bundle verify [-q | --quiet] <file>\ngit bundle list-heads <file> [<refname>...]\ngit bundle unbundle [--progress] <file> [<refname>...]"
+  },
+  {
+    "name": "cat-file",
+    "description": "Inspect an object’s type, size, or stored contents.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git cat-file <type> <object>\ngit cat-file (-e | -p | -t | -s) <object>\ngit cat-file (--textconv | --filters)\n\t     [<rev>:<path|tree-ish> | --path=<path|tree-ish> <rev>]\ngit cat-file (--batch | --batch-check | --batch-command) [--batch-all-objects]\n\t     [--buffer] [--follow-symlinks] [--unordered]\n\t     [--textconv | --filters] [-Z]"
+  },
+  {
+    "name": "check-attr",
+    "description": "See which Git attributes apply to a path.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git check-attr [--source <tree-ish>] [-a | --all | <attr>...] [--] <pathname>...\ngit check-attr --stdin [-z] [--source <tree-ish>] [-a | --all | <attr>...]"
+  },
+  {
+    "name": "check-ignore",
+    "description": "Find the ignore rule that excludes a file.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git check-ignore [<options>] <pathname>...\ngit check-ignore [<options>] --stdin"
+  },
+  {
+    "name": "check-mailmap",
+    "description": "Resolve contributor names and emails using mailmap rules.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git check-mailmap [<options>] <contact>..."
+  },
+  {
+    "name": "check-ref-format",
+    "description": "Check whether a proposed branch or reference name is valid.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git check-ref-format [--normalize]\n       [--[no-]allow-onelevel] [--refspec-pattern]\n       <refname>\ngit check-ref-format --branch <branchname-shorthand>"
+  },
+  {
+    "name": "checkout",
+    "description": "Switch branches or restore files using Git’s older combined interface.",
+    "category": "branches",
+    "advanced": false,
+    "syntax": "git checkout [-q] [-f] [-m] [<branch>]\ngit checkout [-q] [-f] [-m] --detach [<branch>]\ngit checkout [-q] [-f] [-m] [--detach] <commit>\ngit checkout [-q] [-f] [-m] [[-b|-B|--orphan] <new-branch>] [<start-point>]\ngit checkout <tree-ish> [--] <pathspec>...\ngit checkout <tree-ish> --pathspec-from-file=<file> [--pathspec-file-nul]\ngit checkout [-f|--ours|--theirs|-m|--conflict=<style>] [--] <pathspec>...\ngit checkout [-f|--ours|--theirs|-m|--conflict=<style>] --pathspec-from-file=<file> [--pathspec-file-nul]\ngit checkout (-p|--patch) [<tree-ish>] [--] [<pathspec>...]"
+  },
+  {
+    "name": "checkout-index",
+    "description": "Copy staged file contents from the index into the working directory.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git checkout-index [-u] [-q] [-a] [-f] [-n] [--prefix=<string>]\n\t\t   [--stage=<number>|all]\n\t\t   [--temp]\n\t\t   [--ignore-skip-worktree-bits]\n\t\t   [-z] [--stdin]\n\t\t   [--] [<file>...]"
+  },
+  {
+    "name": "cherry",
+    "description": "Identify commits whose patches are already present upstream.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git cherry [-v] [<upstream> [<head> [<limit>]]]"
+  },
+  {
+    "name": "cherry-pick",
+    "description": "Apply selected existing commits onto your current branch.",
+    "category": "branches",
+    "advanced": false,
+    "syntax": "git cherry-pick [--edit] [-n] [-m <parent-number>] [-s] [-x] [--ff]\n\t\t  [-S[<keyid>]] <commit>...\ngit cherry-pick (--continue | --skip | --abort | --quit)"
+  },
+  {
+    "name": "citool",
+    "description": "Open a graphical interface for staging and committing changes.",
+    "category": "integrations",
+    "advanced": false,
+    "syntax": "git citool"
+  },
+  {
+    "name": "clean",
+    "description": "Delete untracked files, with optional removal of ignored files.",
+    "category": "files",
+    "advanced": false,
+    "syntax": "git clean [-d] [-f] [-i] [-n] [-q] [-e <pattern>] [-x | -X] [--] [<pathspec>...]"
+  },
+  {
+    "name": "clone",
+    "description": "Create a local copy of a repository and its history.",
+    "category": "setup",
+    "advanced": false,
+    "syntax": "git clone [--template=<template-directory>]\n\t  [-l] [-s] [--no-hardlinks] [-q] [-n] [--bare] [--mirror]\n\t  [-o <name>] [-b <name>] [-u <upload-pack>] [--reference <repository>]\n\t  [--dissociate] [--separate-git-dir <git-dir>]\n\t  [--depth <depth>] [--[no-]single-branch] [--[no-]tags]\n\t  [--recurse-submodules[=<pathspec>]] [--[no-]shallow-submodules]\n\t  [--[no-]remote-submodules] [--jobs <n>] [--sparse] [--[no-]reject-shallow]\n\t  [--filter=<filter-spec> [--also-filter-submodules]] [--] <repository>\n\t  [<directory>]"
+  },
+  {
+    "name": "column",
+    "description": "Arrange text into columns for terminal output.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git column [--command=<name>] [--[raw-]mode=<mode>] [--width=<width>]\n\t     [--indent=<string>] [--nl=<string>] [--padding=<n>]"
+  },
+  {
+    "name": "commit",
+    "description": "Record staged changes as a new point in project history.",
+    "category": "history",
+    "advanced": false,
+    "syntax": "git commit [-a | --interactive | --patch] [-s] [-v] [-u[<mode>]] [--amend]\n\t   [--dry-run] [(-c | -C | --squash) <commit> | --fixup [(amend|reword):]<commit>]\n\t   [-F <file> | -m <msg>] [--reset-author] [--allow-empty]\n\t   [--allow-empty-message] [--no-verify] [-e] [--author=<author>]\n\t   [--date=<date>] [--cleanup=<mode>] [--[no-]status]\n\t   [-i | -o] [--pathspec-from-file=<file> [--pathspec-file-nul]]\n\t   [(--trailer <token>[(=|:)<value>])...] [-S[<keyid>]]\n\t   [--] [<pathspec>...]"
+  },
+  {
+    "name": "commit-graph",
+    "description": "Write or verify an index that speeds up commit-history queries.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git commit-graph verify [--object-dir <dir>] [--shallow] [--[no-]progress]\ngit commit-graph write [--object-dir <dir>] [--append]\n\t\t\t[--split[=<strategy>]] [--reachable | --stdin-packs | --stdin-commits]\n\t\t\t[--changed-paths] [--[no-]max-new-filters <n>] [--[no-]progress]\n\t\t\t<split-options>"
+  },
+  {
+    "name": "commit-tree",
+    "description": "Create a commit object directly from a tree and parent commits.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git commit-tree <tree> [(-p <parent>)...]\ngit commit-tree [(-p <parent>)...] [-S[<keyid>]] [(-m <message>)...]\n\t\t  [(-F <file>)...] <tree>"
+  },
+  {
+    "name": "config",
+    "description": "Read or change Git settings at local, global, or system scope.",
+    "category": "setup",
+    "advanced": false,
+    "syntax": "git config list [<file-option>] [<display-option>] [--includes]\ngit config get [<file-option>] [<display-option>] [--includes] [--all] [--regexp] [--value=<pattern>] [--fixed-value] [--default=<default>] [--url=<url>] <name>\ngit config set [<file-option>] [--type=<type>] [--all] [--value=<pattern>] [--fixed-value] <name> <value>\ngit config unset [<file-option>] [--all] [--value=<pattern>] [--fixed-value] <name>\ngit config rename-section [<file-option>] <old-name> <new-name>\ngit config remove-section [<file-option>] <name>\ngit config edit [<file-option>]\ngit config [<file-option>] --get-colorbool <name> [<stdout-is-tty>]"
+  },
+  {
+    "name": "count-objects",
+    "description": "Measure loose objects and packed storage in a repository.",
+    "category": "internals",
+    "advanced": false,
+    "syntax": "git count-objects [-v] [-H | --human-readable]"
+  },
+  {
+    "name": "credential",
+    "description": "Pass authentication requests to configured credential helpers.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git credential (fill|approve|reject|capability)"
+  },
+  {
+    "name": "credential-cache",
+    "description": "Keep credentials temporarily in memory through a helper process.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git config credential.helper 'cache [<options>]'"
+  },
+  {
+    "name": "credential-store",
+    "description": "Save credentials to an unencrypted file for later authentication.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git config credential.helper 'store [<options>]'"
+  },
+  {
+    "name": "cvsexportcommit",
+    "description": "Send the changes from one Git commit to a CVS checkout.",
+    "category": "integrations",
+    "advanced": false,
+    "syntax": "git cvsexportcommit [-h] [-u] [-v] [-c] [-P] [-p] [-a] [-d <cvsroot>]\n\t[-w <cvs-workdir>] [-W] [-f] [-m <msgprefix>] [<parent-commit>] <commit-id>"
+  },
+  {
+    "name": "cvsimport",
+    "description": "Convert CVS history into a Git repository.",
+    "category": "integrations",
+    "advanced": false,
+    "syntax": "git cvsimport [-o <branch-for-HEAD>] [-h] [-v] [-d <CVSROOT>]\n\t      [-A <author-conv-file>] [-p <options-for-cvsps>] [-P <file>]\n\t      [-C <git-repository>] [-z <fuzz>] [-i] [-k] [-u] [-s <subst>]\n\t      [-a] [-m] [-M <regex>] [-S <regex>] [-L <commit-limit>]\n\t      [-r <remote>] [-R] [<CVS-module>]"
+  },
+  {
+    "name": "cvsserver",
+    "description": "Expose a Git repository through a CVS-compatible server.",
+    "category": "integrations",
+    "advanced": false,
+    "syntax": "SSH:\n\nexport CVS_SERVER=\"git cvsserver\"\ncvs -d :ext:user@server/path/repo.git co <HEAD_name>\n\npserver (/etc/inetd.conf):\n\ncvspserver stream tcp nowait nobody /usr/bin/git-cvsserver git-cvsserver pserver\n\nUsage:\n\ngit-cvsserver [<options>] [pserver|server] [<directory> ...]"
+  },
+  {
+    "name": "daemon",
+    "description": "Serve repositories over the native Git protocol.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git daemon [--verbose] [--syslog] [--export-all]\n\t   [--timeout=<n>] [--init-timeout=<n>] [--max-connections=<n>]\n\t   [--strict-paths] [--base-path=<path>] [--base-path-relaxed]\n\t   [--user-path | --user-path=<path>]\n\t   [--interpolated-path=<pathtemplate>]\n\t   [--reuseaddr] [--detach] [--pid-file=<file>]\n\t   [--enable=<service>] [--disable=<service>]\n\t   [--allow-override=<service>] [--forbid-override=<service>]\n\t   [--access-hook=<path>] [--[no-]informative-errors]\n\t   [--inetd |\n\t     [--listen=<host-or-ipaddr>] [--port=<n>]\n\t     [--user=<user> [--group=<group>]]]\n\t   [--log-destination=(stderr|syslog|none)]\n\t   [<directory>...]"
+  },
+  {
+    "name": "describe",
+    "description": "Give a commit a readable name based on nearby tags.",
+    "category": "history",
+    "advanced": false,
+    "syntax": "git describe [--all] [--tags] [--contains] [--abbrev=<n>] [<commit-ish>...]\ngit describe [--all] [--tags] [--contains] [--abbrev=<n>] --dirty[=<mark>]\ngit describe <blob>"
+  },
+  {
+    "name": "diagnose",
+    "description": "Create a diagnostic archive for investigating repository problems.",
+    "category": "setup",
+    "advanced": false,
+    "syntax": "git diagnose [(-o | --output-directory) <path>] [(-s | --suffix) <format>]\n\t       [--mode=<mode>]"
+  },
+  {
+    "name": "diff",
+    "description": "Compare changes between files, the index, commits, or branches.",
+    "category": "files",
+    "advanced": false,
+    "syntax": "git diff [<options>] [<commit>] [--] [<path>...]\ngit diff [<options>] --cached [--merge-base] [<commit>] [--] [<path>...]\ngit diff [<options>] [--merge-base] <commit> [<commit>...] <commit> [--] [<path>...]\ngit diff [<options>] <commit>...<commit> [--] [<path>...]\ngit diff [<options>] <blob> <blob>\ngit diff [<options>] --no-index [--] <path> <path> [<pathspec>...]"
+  },
+  {
+    "name": "diff-files",
+    "description": "Compare working files against their staged versions.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git diff-files [-q] [-0 | -1 | -2 | -3 | -c | --cc] [<common-diff-options>] [<path>...]"
+  },
+  {
+    "name": "diff-index",
+    "description": "Compare a tree with the index or working directory.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git diff-index [-m] [--cached] [--merge-base] [<common-diff-options>] <tree-ish> [<path>...]"
+  },
+  {
+    "name": "diff-pairs",
+    "description": "Compare object pairs supplied through standard input.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git diff-pairs -z [<diff-options>]"
+  },
+  {
+    "name": "diff-tree",
+    "description": "Compare the contents of two tree objects.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git diff-tree [--stdin] [-m] [-s] [-v] [--no-commit-id] [--pretty]\n\t      [-t] [-r] [-c | --cc] [--combined-all-paths] [--root] [--merge-base]\n\t      [<common-diff-options>] <tree-ish> [<tree-ish>] [<path>...]"
+  },
+  {
+    "name": "difftool",
+    "description": "Open a configured external tool to compare changes visually.",
+    "category": "internals",
+    "advanced": false,
+    "syntax": "git difftool [<options>] [<commit> [<commit>]] [--] [<path>...]"
+  },
+  {
+    "name": "fast-export",
+    "description": "Write repository history in a stream suitable for transfer or conversion.",
+    "category": "internals",
+    "advanced": false,
+    "syntax": "git fast-export [<options>] | git fast-import"
+  },
+  {
+    "name": "fast-import",
+    "description": "Build repository objects from a structured import stream.",
+    "category": "internals",
+    "advanced": false,
+    "syntax": "frontend | git fast-import [<options>]"
+  },
+  {
+    "name": "fetch",
+    "description": "Download remote objects and update remote-tracking references.",
+    "category": "remotes",
+    "advanced": false,
+    "syntax": "git fetch [<options>] [<repository> [<refspec>...]]\ngit fetch [<options>] <group>\ngit fetch --multiple [<options>] [(<repository>|<group>)...]\ngit fetch --all [<options>]"
+  },
+  {
+    "name": "fetch-pack",
+    "description": "Retrieve objects from another repository using the low-level transfer protocol.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git fetch-pack [--all] [--quiet|-q] [--keep|-k] [--thin] [--include-tag]\n\t[--upload-pack=<git-upload-pack>]\n\t[--depth=<n>] [--no-progress]\n\t[-v] <repository> [<refs>...]"
+  },
+  {
+    "name": "filter-branch",
+    "description": "Rewrite a range of commits using filters; prefer modern migration tools for large rewrites.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git filter-branch [--setup <command>] [--subdirectory-filter <directory>]\n\t[--env-filter <command>] [--tree-filter <command>]\n\t[--index-filter <command>] [--parent-filter <command>]\n\t[--msg-filter <command>] [--commit-filter <command>]\n\t[--tag-name-filter <command>] [--prune-empty]\n\t[--original <namespace>] [-d <directory>] [-f | --force]\n\t[--state-branch <branch>] [--] [<rev-list-options>...]"
+  },
+  {
+    "name": "fmt-merge-msg",
+    "description": "Prepare a merge message from a list of incoming branch tips.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git fmt-merge-msg [-m <message>] [--into-name <branch>] [--log[=<n>] | --no-log]\ngit fmt-merge-msg [-m <message>] [--log[=<n>] | --no-log] -F <file>"
+  },
+  {
+    "name": "for-each-ref",
+    "description": "List references using a customizable output format.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git for-each-ref [--count=<count>] [--shell|--perl|--python|--tcl]\n\t\t   [(--sort=<key>)...] [--format=<format>]\n\t\t   [--include-root-refs] [--points-at=<object>]\n\t\t   [--merged[=<object>]] [--no-merged[=<object>]]\n\t\t   [--contains[=<object>]] [--no-contains[=<object>]]\n\t\t   [(--exclude=<pattern>)...] [--start-after=<marker>]\n\t\t   [ --stdin | (<pattern>...)]"
+  },
+  {
+    "name": "for-each-repo",
+    "description": "Run a Git command across repositories listed in configuration.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git for-each-repo --config=<config> [--] <arguments>"
+  },
+  {
+    "name": "format-patch",
+    "description": "Export commits as patches suitable for email review.",
+    "category": "email",
+    "advanced": false,
+    "syntax": "git format-patch [-k] [(-o|--output-directory) <dir> | --stdout]\n\t\t   [--no-thread | --thread[=<style>]]\n\t\t   [(--attach|--inline)[=<boundary>] | --no-attach]\n\t\t   [-s | --signoff]\n\t\t   [--signature=<signature> | --no-signature]\n\t\t   [--signature-file=<file>]\n\t\t   [-n | --numbered | -N | --no-numbered]\n\t\t   [--start-number <n>] [--numbered-files]\n\t\t   [--in-reply-to=<message-id>] [--suffix=.<sfx>]\n\t\t   [--ignore-if-in-upstream] [--always]\n\t\t   [--cover-from-description=<mode>]\n\t\t   [--rfc[=<rfc>]] [--subject-prefix=<subject-prefix>]\n\t\t   [(--reroll-count|-v) <n>]\n\t\t   [--to=<email>] [--cc=<email>]\n\t\t   [--[no-]cover-letter] [--quiet]\n\t\t   [--commit-list-format=<format-spec>]\n\t\t   [--[no-]encode-email-headers]\n\t\t   [--no-notes | --notes[=<ref>]]\n\t\t   [--interdiff=<previous>]\n\t\t   [--range-diff=<previous> [--creation-factor=<percent>]]\n\t\t   [--filename-max-length=<n>]\n\t\t   [--progress]\n\t\t   [<common-diff-options>]\n\t\t   [ <since> | <revision-range> ]"
+  },
+  {
+    "name": "fsck",
+    "description": "Check the integrity and connectivity of stored Git objects.",
+    "category": "recovery",
+    "advanced": false,
+    "syntax": "git fsck [--tags] [--root] [--unreachable] [--cache] [--no-reflogs]\n\t [--[no-]full] [--strict] [--verbose] [--lost-found]\n\t [--[no-]dangling] [--[no-]progress] [--connectivity-only]\n\t [--[no-]name-objects] [--[no-]references] [<object>...]"
+  },
+  {
+    "name": "gc",
+    "description": "Run repository cleanup and storage optimization.",
+    "category": "maintenance",
+    "advanced": false,
+    "syntax": "git gc [--aggressive] [--auto] [--[no-]detach] [--quiet] [--prune=<date> | --no-prune] [--force] [--keep-largest-pack]"
+  },
+  {
+    "name": "get-tar-commit-id",
+    "description": "Read the embedded commit identifier from a Git-generated tar archive.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git get-tar-commit-id"
+  },
+  {
+    "name": "grep",
+    "description": "Search tracked content or committed trees for a pattern.",
+    "category": "history",
+    "advanced": false,
+    "syntax": "git grep [-a | --text] [-I] [--textconv] [-i | --ignore-case] [-w | --word-regexp]\n\t   [-v | --invert-match] [-h|-H] [--full-name]\n\t   [-E | --extended-regexp] [-G | --basic-regexp]\n\t   [-P | --perl-regexp]\n\t   [-F | --fixed-strings] [-n | --line-number] [--column]\n\t   [-l | --files-with-matches] [-L | --files-without-match]\n\t   [(-O | --open-files-in-pager) [<pager>]]\n\t   [-z | --null]\n\t   [ -o | --only-matching ] [-c | --count] [--all-match] [-q | --quiet]\n\t   [--max-depth <depth>] [--[no-]recursive]\n\t   [--color[=<when>] | --no-color]\n\t   [--break] [--heading] [-p | --show-function]\n\t   [-A <post-context>] [-B <pre-context>] [-C <context>]\n\t   [-W | --function-context]\n\t   [(-m | --max-count) <num>]\n\t   [--threads <num>]\n\t   [-f <file>] [-e] <pattern>\n\t   [--and|--or|--not|(|)|-e <pattern>...]\n\t   [--recurse-submodules] [--parent-basename <basename>]\n\t   [ [--[no-]exclude-standard] [--cached | --untracked | --no-index] | <tree>...]\n\t   [--] [<pathspec>...]"
+  },
+  {
+    "name": "gui",
+    "description": "Open Git’s optional graphical staging and repository interface.",
+    "category": "integrations",
+    "advanced": false,
+    "syntax": "git gui [<command>] [<arguments>]"
+  },
+  {
+    "name": "hash-object",
+    "description": "Calculate an object identifier and optionally store the object.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git hash-object [-t <type>] [-w] [--path=<file> | --no-filters]\n\t\t[--stdin [--literally]] [--] <file>...\ngit hash-object [-t <type>] [-w] --stdin-paths [--no-filters]"
+  },
+  {
+    "name": "help",
+    "description": "Open documentation for a command or Git topic.",
+    "category": "setup",
+    "advanced": false,
+    "syntax": "git help [-a|--all] [--[no-]verbose] [--[no-]external-commands] [--[no-]aliases]\ngit help [[-i|--info] [-m|--man] [-w|--web]] [<command>|<doc>]\ngit help [-g|--guides]\ngit help [-c|--config]\ngit help [--user-interfaces]\ngit help [--developer-interfaces]"
+  },
+  {
+    "name": "history",
+    "description": "Experimentally reword or split commits while rewriting their descendants.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git history reword <commit> [--dry-run] [--update-refs=(branches|head)]\ngit history split <commit> [--dry-run] [--update-refs=(branches|head)] [--] [<pathspec>...]"
+  },
+  {
+    "name": "hook",
+    "description": "Run a configured repository hook explicitly.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git hook run [--allow-unknown-hook-name] [--ignore-missing] [--to-stdin=<path>] <hook-name> [-- <hook-args>]\ngit hook list [--allow-unknown-hook-name] [-z] [--show-scope] <hook-name>"
+  },
+  {
+    "name": "http-backend",
+    "description": "Provide Git repository access through an HTTP server’s CGI interface.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git http-backend"
+  },
+  {
+    "name": "http-fetch",
+    "description": "Retrieve objects over HTTP using a low-level helper.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git http-fetch [-c] [-t] [-a] [-d] [-v] [-w <filename>] [--recover] [--stdin | --packfile=<hash> | <commit>] <URL>"
+  },
+  {
+    "name": "http-push",
+    "description": "Send objects to a WebDAV-enabled HTTP remote.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git http-push [--all] [--dry-run] [--force] [--verbose] <URL> <ref> [<ref>...]"
+  },
+  {
+    "name": "imap-send",
+    "description": "Upload prepared patch emails to an IMAP mailbox.",
+    "category": "email",
+    "advanced": false,
+    "syntax": "git imap-send [-v] [-q] [--[no-]curl] [(--folder|-f) <folder>]\ngit imap-send --list"
+  },
+  {
+    "name": "index-pack",
+    "description": "Build an index for a packfile and verify its objects.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git index-pack [-v] [-o <index-file>] [--[no-]rev-index] <pack-file>\ngit index-pack --stdin [--fix-thin] [--keep] [-v] [-o <index-file>]\n\t\t  [--[no-]rev-index] [<pack-file>]"
+  },
+  {
+    "name": "init",
+    "description": "Start a repository in a new or existing directory.",
+    "category": "setup",
+    "advanced": false,
+    "syntax": "git init [-q | --quiet] [--bare] [--template=<template-directory>]\n\t [--separate-git-dir <git-dir>] [--object-format=<format>]\n\t [--ref-format=<format>]\n\t [-b <branch-name> | --initial-branch=<branch-name>]\n\t [--shared[=<permissions>]] [<directory>]"
+  },
+  {
+    "name": "instaweb",
+    "description": "Launch a temporary web interface for browsing a local repository.",
+    "category": "integrations",
+    "advanced": false,
+    "syntax": "git instaweb [--local] [--httpd=<httpd>] [--port=<port>]\n               [--browser=<browser>]\ngit instaweb [--start] [--stop] [--restart]"
+  },
+  {
+    "name": "interpret-trailers",
+    "description": "Read or update structured fields at the end of commit messages.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git interpret-trailers [--in-place] [--trim-empty]\n\t\t\t[(--trailer (<key>|<key-alias>)[(=|:)<value>])...]\n\t\t\t[--parse] [<file>...]"
+  },
+  {
+    "name": "last-modified",
+    "description": "Find the most recent commit affecting each requested path.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git last-modified [--recursive] [--show-trees] [--max-depth=<depth>] [-z]\n\t\t  [<revision-range>] [[--] <pathspec>...]"
+  },
+  {
+    "name": "log",
+    "description": "Browse commit history with filters and formatting options.",
+    "category": "history",
+    "advanced": false,
+    "syntax": "git log [<options>] [<revision-range>] [[--] <path>...]"
+  },
+  {
+    "name": "ls-files",
+    "description": "List paths known to the index and inspect their tracking state.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git ls-files [-z] [-t] [-v] [-f]\n\t\t[-c|--cached] [-d|--deleted] [-o|--others] [-i|--ignored]\n\t\t[-s|--stage] [-u|--unmerged] [-k|--killed] [-m|--modified]\n\t\t[--resolve-undo]\n\t\t[--directory [--no-empty-directory]] [--eol]\n\t\t[--deduplicate]\n\t\t[-x <pattern>|--exclude=<pattern>]\n\t\t[-X <file>|--exclude-from=<file>]\n\t\t[--exclude-per-directory=<file>]\n\t\t[--exclude-standard]\n\t\t[--error-unmatch] [--with-tree=<tree-ish>]\n\t\t[--full-name] [--recurse-submodules]\n\t\t[--abbrev[=<n>]] [--format=<format>] [--] [<file>...]"
+  },
+  {
+    "name": "ls-remote",
+    "description": "List branches and tags advertised by a remote repository.",
+    "category": "remotes",
+    "advanced": true,
+    "syntax": "git ls-remote [--branches] [--tags] [--refs] [--upload-pack=<exec>]\n\t      [-q | --quiet] [--exit-code] [--get-url] [--sort=<key>]\n\t      [--symref] [<repository> [<patterns>...]]"
+  },
+  {
+    "name": "ls-tree",
+    "description": "List the files and directories recorded in a tree object.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git ls-tree [-d] [-r] [-t] [-l] [-z]\n\t    [--name-only] [--name-status] [--object-only] [--full-name] [--full-tree] [--abbrev[=<n>]] [--format=<format>]\n\t    <tree-ish> [<path>...]"
+  },
+  {
+    "name": "mailinfo",
+    "description": "Extract a commit message and patch from an email.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git mailinfo [-k|-b] [-u | --encoding=<encoding> | -n]\n\t       [--[no-]scissors] [--quoted-cr=<action>]\n\t       <msg> <patch>"
+  },
+  {
+    "name": "mailsplit",
+    "description": "Split a mailbox into individual message files.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git mailsplit [-b] [-f<nn>] [-d<prec>] [--keep-cr] [--mboxrd]\n\t\t-o<directory> [--] [(<mbox>|<Maildir>)...]"
+  },
+  {
+    "name": "maintenance",
+    "description": "Schedule or run tasks that keep repository storage efficient.",
+    "category": "maintenance",
+    "advanced": false,
+    "syntax": "git maintenance run [<options>]\ngit maintenance start [--scheduler=<scheduler>]\ngit maintenance (stop|register|unregister) [<options>]\ngit maintenance is-needed [<options>]"
+  },
+  {
+    "name": "merge",
+    "description": "Integrate another branch’s history into the current branch.",
+    "category": "branches",
+    "advanced": false,
+    "syntax": "git merge [-n] [--stat] [--compact-summary] [--no-commit] [--squash] [--[no-]edit]\n\t[--no-verify] [-s <strategy>] [-X <strategy-option>] [-S[<keyid>]]\n\t[--[no-]allow-unrelated-histories]\n\t[--[no-]rerere-autoupdate] [-m <msg>] [-F <file>]\n\t[--into-name <branch>] [<commit>...]\ngit merge (--continue | --abort | --quit)"
+  },
+  {
+    "name": "merge-base",
+    "description": "Find shared ancestors used to compare or merge commits.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git merge-base [-a | --all] <commit> <commit>...\ngit merge-base [-a | --all] --octopus <commit>...\ngit merge-base --is-ancestor <commit> <commit>\ngit merge-base --independent <commit>...\ngit merge-base --fork-point <ref> [<commit>]"
+  },
+  {
+    "name": "merge-file",
+    "description": "Perform a three-way merge of individual files.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git merge-file [-L <current-name> [-L <base-name> [-L <other-name>]]]\n\t[--ours|--theirs|--union] [-p|--stdout] [-q|--quiet] [--marker-size=<n>]\n\t[--[no-]diff3] [--object-id] <current> <base> <other>"
+  },
+  {
+    "name": "merge-index",
+    "description": "Run a merge helper for unmerged index entries.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git merge-index [-o] [-q] <merge-program> (-a | ( [--] <file>...) )"
+  },
+  {
+    "name": "merge-one-file",
+    "description": "Use Git’s basic single-file merge helper.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git merge-one-file"
+  },
+  {
+    "name": "merge-tree",
+    "description": "Compute a merge result without switching the working tree.",
+    "category": "internals",
+    "advanced": false,
+    "syntax": "git merge-tree [--write-tree] [<options>] <branch1> <branch2>\ngit merge-tree [--trivial-merge] <base-tree> <branch1> <branch2> (deprecated)\n\n[[NEWMERGE]]"
+  },
+  {
+    "name": "mergetool",
+    "description": "Resolve merge conflicts using an external editor or visual tool.",
+    "category": "branches",
+    "advanced": false,
+    "syntax": "git mergetool [--tool=<tool>] [-y | --[no-]prompt] [<file>...]"
+  },
+  {
+    "name": "mktag",
+    "description": "Validate and store an annotated tag object from input.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git mktag"
+  },
+  {
+    "name": "mktree",
+    "description": "Create a tree object from a formatted list of entries.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git mktree [-z] [--missing] [--batch]"
+  },
+  {
+    "name": "multi-pack-index",
+    "description": "Manage an index spanning multiple object packfiles.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git multi-pack-index [<options>] write [--preferred-pack=<pack>]\n\t\t         [--[no-]bitmap] [--[no-]incremental] [--[no-]stdin-packs]\n\t\t         [--refs-snapshot=<path>]\ngit multi-pack-index [<options>] compact [--[no-]incremental]\n\t\t         [--[no-]bitmap] <from> <to>\ngit multi-pack-index [<options>] verify\ngit multi-pack-index [<options>] expire\ngit multi-pack-index [<options>] repack [--batch-size=<size>]"
+  },
+  {
+    "name": "mv",
+    "description": "Move or rename tracked paths and stage the change.",
+    "category": "files",
+    "advanced": false,
+    "syntax": "git mv [-v] [-f] [-n] [-k] <source> <destination>\ngit mv [-v] [-f] [-n] [-k] <source>... <destination-directory>"
+  },
+  {
+    "name": "name-rev",
+    "description": "Express commits in terms of reachable reference names.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git name-rev [--tags] [--refs=<pattern>]\n\t       ( --all | --annotate-stdin | <commit-ish>... )"
+  },
+  {
+    "name": "notes",
+    "description": "Attach supplementary text to objects without editing their commits.",
+    "category": "history",
+    "advanced": false,
+    "syntax": "git notes [list [<object>]]\ngit notes add [-f] [--allow-empty] [--[no-]separator | --separator=<paragraph-break>] [--[no-]stripspace] [-F <file> | -m <msg> | (-c | -C) <object>] [-e] [<object>]\ngit notes copy [-f] ( --stdin | <from-object> [<to-object>] )\ngit notes append [--allow-empty] [--[no-]separator | --separator=<paragraph-break>] [--[no-]stripspace] [-F <file> | -m <msg> | (-c | -C) <object>] [-e] [<object>]\ngit notes edit [--allow-empty] [<object>] [--[no-]stripspace]\ngit notes show [<object>]\ngit notes merge [-v | -q] [-s <strategy> ] <notes-ref>\ngit notes merge --commit [-v | -q]\ngit notes merge --abort [-v | -q]\ngit notes remove [--ignore-missing] [--stdin] [<object>...]\ngit notes prune [-n] [-v]\ngit notes get-ref"
+  },
+  {
+    "name": "p4",
+    "description": "Exchange changes between Git and a Perforce depot.",
+    "category": "integrations",
+    "advanced": false,
+    "syntax": "git p4 clone [<sync-options>] [<clone-options>] <p4-depot-path>...\ngit p4 sync [<sync-options>] [<p4-depot-path>...]\ngit p4 rebase\ngit p4 submit [<submit-options>] [<master-branch-name>]"
+  },
+  {
+    "name": "pack-objects",
+    "description": "Compress objects into packfiles for storage or transfer.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git pack-objects [-q | --progress | --all-progress] [--all-progress-implied]\n\t\t   [--no-reuse-delta] [--delta-base-offset] [--non-empty]\n\t\t   [--local] [--incremental] [--window=<n>] [--depth=<n>]\n\t\t   [--revs [--unpacked | --all]] [--keep-pack=<pack-name>]\n\t\t   [--cruft] [--cruft-expiration=<time>]\n\t\t   [--stdout [--filter=<filter-spec>] | <base-name>]\n\t\t   [--shallow] [--keep-true-parents] [--[no-]sparse]\n\t\t   [--name-hash-version=<n>] [--path-walk] < <object-list>"
+  },
+  {
+    "name": "pack-redundant",
+    "description": "Identify packfiles whose objects are already stored elsewhere.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git pack-redundant [--verbose] [--alt-odb] (--all | <pack-filename>...)"
+  },
+  {
+    "name": "pack-refs",
+    "description": "Consolidate references into compact storage.",
+    "category": "maintenance",
+    "advanced": false,
+    "syntax": "git pack-refs [--all] [--no-prune] [--auto] [--include <pattern>] [--exclude <pattern>]"
+  },
+  {
+    "name": "patch-id",
+    "description": "Calculate a patch fingerprint for comparing equivalent changes.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git patch-id [--stable | --unstable | --verbatim]"
+  },
+  {
+    "name": "prune",
+    "description": "Remove unreachable loose objects from repository storage.",
+    "category": "maintenance",
+    "advanced": false,
+    "syntax": "git prune [-n] [-v] [--progress] [--expire <time>] [--] [<head>...]"
+  },
+  {
+    "name": "prune-packed",
+    "description": "Remove loose copies of objects already present in packs.",
+    "category": "maintenance",
+    "advanced": true,
+    "syntax": "git prune-packed [-n | --dry-run] [-q | --quiet]"
+  },
+  {
+    "name": "pull",
+    "description": "Fetch remote changes and integrate them into the current branch.",
+    "category": "remotes",
+    "advanced": false,
+    "syntax": "git pull [<options>] [<repository> [<refspec>...]]"
+  },
+  {
+    "name": "push",
+    "description": "Publish local references and objects to a remote repository.",
+    "category": "remotes",
+    "advanced": false,
+    "syntax": "git push [--all | --branches | --mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run] [--receive-pack=<git-receive-pack>]\n\t [--repo=<repository>] [-f | --force] [-d | --delete] [--prune] [-q | --quiet] [-v | --verbose]\n\t [-u | --set-upstream] [-o <string> | --push-option=<string>]\n\t [--[no-]signed | --signed=(true|false|if-asked)]\n\t [--force-with-lease[=<refname>[:<expect>]] [--force-if-includes]]\n\t [--no-verify] [<repository> [<refspec>...]]"
+  },
+  {
+    "name": "quiltimport",
+    "description": "Import a quilt patch series as Git commits.",
+    "category": "integrations",
+    "advanced": false,
+    "syntax": "git quiltimport [--dry-run | -n] [--author <author>] [--patches <dir>]\n\t\t[--series <file>] [--keep-non-patch]"
+  },
+  {
+    "name": "range-diff",
+    "description": "Compare two versions of a commit series during review.",
+    "category": "branches",
+    "advanced": false,
+    "syntax": "git range-diff [--color=[<when>]] [--no-color] [<diff-options>]\n\t[--no-dual-color] [--creation-factor=<factor>]\n\t[--left-only | --right-only] [--diff-merges=<format>]\n\t[--remerge-diff]\n\t( <range1> <range2> | <rev1>...<rev2> | <base> <rev1> <rev2> )\n\t[[--] <path>...]"
+  },
+  {
+    "name": "read-tree",
+    "description": "Load tree contents into the index, optionally updating working files.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git read-tree [(-m [--trivial] [--aggressive] | --reset | --prefix=<prefix>)\n\t\t[-u | -i]] [--index-output=<file>] [--no-sparse-checkout]\n\t\t(--empty | <tree-ish1> [<tree-ish2> [<tree-ish3>]])"
+  },
+  {
+    "name": "rebase",
+    "description": "Replay commits on another base or edit local commit history.",
+    "category": "branches",
+    "advanced": false,
+    "syntax": "git rebase [-i | --interactive] [<options>] [--exec <cmd>]\n\t[--onto <newbase> | --keep-base] [<upstream> [<branch>]]\ngit rebase [-i | --interactive] [<options>] [--exec <cmd>] [--onto <newbase>]\n\t--root [<branch>]\ngit rebase (--continue|--skip|--abort|--quit|--edit-todo|--show-current-patch)"
+  },
+  {
+    "name": "receive-pack",
+    "description": "Accept a push on the receiving side of a Git connection.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git receive-pack <git-dir>"
+  },
+  {
+    "name": "reflog",
+    "description": "Inspect or manage the local record of reference movements.",
+    "category": "recovery",
+    "advanced": false,
+    "syntax": "git reflog [show] [<log-options>] [<ref>]\ngit reflog list\ngit reflog exists <ref>\ngit reflog write <ref> <old-oid> <new-oid> <message>\ngit reflog delete [--rewrite] [--updateref]\n\t[--dry-run | -n] [--verbose] <ref>@{<specifier>}...\ngit reflog drop [--all [--single-worktree] | <refs>...]\ngit reflog expire [--expire=<time>] [--expire-unreachable=<time>]\n\t[--rewrite] [--updateref] [--stale-fix]\n\t[--dry-run | -n] [--verbose] [--all [--single-worktree] | <refs>...]"
+  },
+  {
+    "name": "refs",
+    "description": "Inspect, verify, or migrate reference storage.",
+    "category": "maintenance",
+    "advanced": false,
+    "syntax": "git refs migrate --ref-format=<format> [--no-reflog] [--dry-run]\ngit refs verify [--strict] [--verbose]\ngit refs list [--count=<count>] [--shell|--perl|--python|--tcl]\n\t\t   [(--sort=<key>)...] [--format=<format>]\n\t\t   [--include-root-refs] [--points-at=<object>]\n\t\t   [--merged[=<object>]] [--no-merged[=<object>]]\n\t\t   [--contains[=<object>]] [--no-contains[=<object>]]\n\t\t   [(--exclude=<pattern>)...] [--start-after=<marker>]\n\t\t   [ --stdin | (<pattern>...)]\ngit refs exists <ref>\ngit refs optimize [--all] [--no-prune] [--auto] [--include <pattern>] [--exclude <pattern>]"
+  },
+  {
+    "name": "remote",
+    "description": "Manage remote repository addresses and tracking configuration.",
+    "category": "remotes",
+    "advanced": false,
+    "syntax": "git remote [-v | --verbose]\ngit remote add [-t <branch>] [-m <master>] [-f] [--[no-]tags] [--mirror=(fetch|push)] <name> <URL>\ngit remote rename [--[no-]progress] <old> <new>\ngit remote remove <name>\ngit remote set-head <name> (-a | --auto | -d | --delete | <branch>)\ngit remote set-branches [--add] <name> <branch>...\ngit remote get-url [--push] [--all] <name>\ngit remote set-url [--push] <name> <newurl> [<oldurl>]\ngit remote set-url --add [--push] <name> <newurl>\ngit remote set-url --delete [--push] <name> <URL>\ngit remote [-v | --verbose] show [-n] <name>...\ngit remote prune [-n | --dry-run] <name>...\ngit remote [-v | --verbose] update [-p | --prune] [(<group> | <remote>)...]"
+  },
+  {
+    "name": "repack",
+    "description": "Reorganize stored objects into packfiles.",
+    "category": "maintenance",
+    "advanced": false,
+    "syntax": "git repack [-a] [-A] [-d] [-f] [-F] [-l] [-n] [-q] [-b] [-m]\n\t[--window=<n>] [--depth=<n>] [--threads=<n>] [--keep-pack=<pack-name>]\n\t[--write-midx] [--name-hash-version=<n>] [--path-walk]"
+  },
+  {
+    "name": "replace",
+    "description": "Configure substitute objects for history inspection.",
+    "category": "maintenance",
+    "advanced": false,
+    "syntax": "git replace [-f] <object> <replacement>\ngit replace [-f] --edit <object>\ngit replace [-f] --graft <commit> [<parent>...]\ngit replace [-f] --convert-graft-file\ngit replace -d <object>...\ngit replace [--format=<format>] [-l [<pattern>]]"
+  },
+  {
+    "name": "replay",
+    "description": "Replay commits without requiring a working tree; this interface is experimental.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "(EXPERIMENTAL!) git replay ([--contained] --onto=<newbase> | --advance=<branch> | --revert=<branch>)\n\t\t\t     [--ref=<ref>] [--ref-action=<mode>] <revision-range>"
+  },
+  {
+    "name": "repo",
+    "description": "Inspect or manage repositories known to Git.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git repo info [--format=(lines|nul) | -z] [--all | <key>...]\ngit repo info --keys [--format=(lines|nul) | -z]\ngit repo structure [--format=(table|lines|nul) | -z]"
+  },
+  {
+    "name": "request-pull",
+    "description": "Prepare a summary asking someone to pull a published branch.",
+    "category": "email",
+    "advanced": false,
+    "syntax": "git request-pull [-p] <start> <URL> [<end>]"
+  },
+  {
+    "name": "rerere",
+    "description": "Record conflict resolutions and reuse them when the same conflict returns.",
+    "category": "internals",
+    "advanced": false,
+    "syntax": "git rerere [clear | forget <pathspec>... | diff | status | remaining | gc]"
+  },
+  {
+    "name": "reset",
+    "description": "Move a branch pointer or reset staged files; some modes discard local changes.",
+    "category": "recovery",
+    "advanced": false,
+    "syntax": "git reset [--soft | --mixed [-N] | --hard | --merge | --keep] [-q] [<commit>]\ngit reset [-q] [<tree-ish>] [--] <pathspec>...\ngit reset [-q] [--pathspec-from-file=<file> [--pathspec-file-nul]] [<tree-ish>]\ngit reset (--patch | -p) [<tree-ish>] [--] [<pathspec>...]"
+  },
+  {
+    "name": "restore",
+    "description": "Restore working files or unstage changes from a chosen source.",
+    "category": "files",
+    "advanced": false,
+    "syntax": "git restore [<options>] [--source=<tree>] [--staged] [--worktree] [--] <pathspec>...\ngit restore [<options>] [--source=<tree>] [--staged] [--worktree] --pathspec-from-file=<file> [--pathspec-file-nul]\ngit restore (-p|--patch) [<options>] [--source=<tree>] [--staged] [--worktree] [--] [<pathspec>...]"
+  },
+  {
+    "name": "rev-list",
+    "description": "Enumerate commits or objects reachable under specified history constraints.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git rev-list [<options>] <commit>... [--] [<path>...]"
+  },
+  {
+    "name": "rev-parse",
+    "description": "Resolve revisions and query repository paths or parsing rules.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git rev-parse [<options>] <arg>..."
+  },
+  {
+    "name": "revert",
+    "description": "Create new commits that reverse earlier changes while retaining shared history.",
+    "category": "recovery",
+    "advanced": false,
+    "syntax": "git revert [--[no-]edit] [-n] [-m <parent-number>] [-s] [-S[<keyid>]] <commit>...\ngit revert (--continue | --skip | --abort | --quit)"
+  },
+  {
+    "name": "rm",
+    "description": "Remove tracked files and stage their deletion.",
+    "category": "files",
+    "advanced": false,
+    "syntax": "git rm [-f | --force] [-n] [-r] [--cached] [--ignore-unmatch]\n       [--quiet] [--pathspec-from-file=<file> [--pathspec-file-nul]]\n       [--] [<pathspec>...]"
+  },
+  {
+    "name": "send-email",
+    "description": "Send a patch series to reviewers by email.",
+    "category": "email",
+    "advanced": false,
+    "syntax": "git send-email [<options>] (<file>|<directory>)...\ngit send-email [<options>] <format-patch-options>\ngit send-email --dump-aliases\ngit send-email --translate-aliases"
+  },
+  {
+    "name": "send-pack",
+    "description": "Send objects and reference updates using the low-level push protocol.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git send-pack [--mirror] [--dry-run] [--force]\n\t\t[--receive-pack=<git-receive-pack>]\n\t\t[--verbose] [--thin] [--atomic]\n\t\t[--[no-]signed | --signed=(true|false|if-asked)]\n\t\t[<host>:]<directory> (--all | <ref>...)"
+  },
+  {
+    "name": "sh-i18n",
+    "description": "Provide translation helpers for Git shell scripts.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": ". \"$(git --exec-path)/git-sh-i18n\""
+  },
+  {
+    "name": "sh-setup",
+    "description": "Provide common initialization helpers for Git shell scripts.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": ". \"$(git --exec-path)/git-sh-setup\""
+  },
+  {
+    "name": "shell",
+    "description": "Restrict an SSH account to permitted Git server operations.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "chsh -s $(command -v git-shell) <user>\ngit clone <user>@localhost:/path/to/repo.git\nssh <user>@localhost"
+  },
+  {
+    "name": "shortlog",
+    "description": "Summarize commits grouped by author or another field.",
+    "category": "history",
+    "advanced": false,
+    "syntax": "git shortlog [<options>] [<revision-range>] [[--] <path>...]\ngit log --pretty=short | git shortlog [<options>]"
+  },
+  {
+    "name": "show",
+    "description": "Display a commit, tag, tree, or file object.",
+    "category": "history",
+    "advanced": false,
+    "syntax": "git show [<options>] [<object>...]"
+  },
+  {
+    "name": "show-branch",
+    "description": "Compare the ancestry and tips of multiple branches.",
+    "category": "internals",
+    "advanced": false,
+    "syntax": "git show-branch [-a | --all] [-r | --remotes] [--topo-order | --date-order]\n\t\t[--current] [--color[=<when>] | --no-color] [--sparse]\n\t\t[--more=<n> | --list | --independent | --merge-base]\n\t\t[--no-name | --sha1-name] [--topics]\n\t\t[(<rev> | <glob>)...]\ngit show-branch (-g | --reflog)[=<n>[,<base>]] [--list] [<ref>]"
+  },
+  {
+    "name": "show-index",
+    "description": "Inspect entries inside a pack index.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git show-index [--object-format=<hash-algorithm>] < <pack-idx-file>"
+  },
+  {
+    "name": "show-ref",
+    "description": "List reference names and the object identifiers they point to.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git show-ref [--head] [-d | --dereference]\n\t     [-s | --hash[=<n>]] [--abbrev[=<n>]] [--branches] [--tags]\n\t     [--] [<pattern>...]\ngit show-ref --verify [-q | --quiet] [-d | --dereference]\n\t     [-s | --hash[=<n>]] [--abbrev[=<n>]]\n\t     [--] [<ref>...]\ngit show-ref --exclude-existing[=<pattern>]\ngit show-ref --exists <ref>"
+  },
+  {
+    "name": "sparse-checkout",
+    "description": "Limit which tracked paths appear in your working directory.",
+    "category": "files",
+    "advanced": false,
+    "syntax": "git sparse-checkout (init | list | set | add | reapply | disable | check-rules | clean) [<options>]"
+  },
+  {
+    "name": "stage",
+    "description": "Stage file changes; an alternative spelling of git add.",
+    "category": "files",
+    "advanced": false,
+    "syntax": "git stage <arg>..."
+  },
+  {
+    "name": "stash",
+    "description": "Save unfinished work temporarily and restore it later.",
+    "category": "branches",
+    "advanced": false,
+    "syntax": "git stash list [<log-options>]\ngit stash show [-u | --include-untracked | --only-untracked] [<diff-options>] [<stash>]\ngit stash drop [-q | --quiet] [<stash>]\ngit stash pop [--index] [-q | --quiet] [<stash>]\ngit stash apply [--index] [-q | --quiet] [<stash>]\ngit stash branch <branchname> [<stash>]\ngit stash [push] [-p | --patch] [-S | --staged] [-k | --[no-]keep-index] [-q | --quiet]\n\t     [-u | --include-untracked] [-a | --all] [(-m | --message) <message>]\n\t     [--pathspec-from-file=<file> [--pathspec-file-nul]]\n\t     [--] [<pathspec>...]\ngit stash save [-p | --patch] [-S | --staged] [-k | --[no-]keep-index] [-q | --quiet]\n           [-u | --include-untracked] [-a | --all] [<message>]\ngit stash clear\ngit stash create [<message>]\ngit stash store [(-m | --message) <message>] [-q | --quiet] <commit>\ngit stash export (--print | --to-ref <ref>) [<stash>...]\ngit stash import <commit>"
+  },
+  {
+    "name": "status",
+    "description": "Inspect staged, modified, and untracked files and the current branch.",
+    "category": "files",
+    "advanced": false,
+    "syntax": "git status [<options>] [--] [<pathspec>...]"
+  },
+  {
+    "name": "stripspace",
+    "description": "Normalize whitespace and optionally handle comment lines in text.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git stripspace [-s | --strip-comments]\ngit stripspace [-c | --comment-lines]"
+  },
+  {
+    "name": "submodule",
+    "description": "Manage external repositories recorded inside a parent repository.",
+    "category": "remotes",
+    "advanced": false,
+    "syntax": "git submodule [--quiet] [--cached]\ngit submodule [--quiet] add [<options>] [--] <repository> [<path>]\ngit submodule [--quiet] status [--cached] [--recursive] [--] [<path>...]\ngit submodule [--quiet] init [--] [<path>...]\ngit submodule [--quiet] deinit [-f|--force] (--all|[--] <path>...)\ngit submodule [--quiet] update [<options>] [--] [<path>...]\ngit submodule [--quiet] set-branch [<options>] [--] <path>\ngit submodule [--quiet] set-url [--] <path> <newurl>\ngit submodule [--quiet] summary [<options>] [--] [<path>...]\ngit submodule [--quiet] foreach [--recursive] <command>\ngit submodule [--quiet] sync [--recursive] [--] [<path>...]\ngit submodule [--quiet] absorbgitdirs [--] [<path>...]"
+  },
+  {
+    "name": "svn",
+    "description": "Exchange commits between Git and a Subversion repository.",
+    "category": "integrations",
+    "advanced": false,
+    "syntax": "git svn <command> [<options>] [<arguments>]"
+  },
+  {
+    "name": "switch",
+    "description": "Change branches or create and switch to a new branch.",
+    "category": "branches",
+    "advanced": false,
+    "syntax": "git switch [<options>] [--no-guess] <branch>\ngit switch [<options>] --detach [<start-point>]\ngit switch [<options>] (-c|-C) <new-branch> [<start-point>]\ngit switch [<options>] --orphan <new-branch>"
+  },
+  {
+    "name": "symbolic-ref",
+    "description": "Inspect or update references that point to other references.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git symbolic-ref [-m <reason>] <name> <ref>\ngit symbolic-ref [-q] [--short] [--no-recurse] <name>\ngit symbolic-ref --delete [-q] <name>"
+  },
+  {
+    "name": "tag",
+    "description": "Create, inspect, verify, or delete tags marking points in history.",
+    "category": "remotes",
+    "advanced": false,
+    "syntax": "git tag [-a | -s | -u <key-id>] [-f] [-m <msg> | -F <file>] [-e]\n\t[(--trailer <token>[(=|:)<value>])...]\n\t<tagname> [<commit> | <object>]\ngit tag -d <tagname>...\ngit tag [-n[<num>]] -l [--contains <commit>] [--no-contains <commit>]\n\t[--points-at <object>] [--column[=<options>] | --no-column]\n\t[--create-reflog] [--sort=<key>] [--format=<format>]\n\t[--merged <commit>] [--no-merged <commit>] [<pattern>...]\ngit tag -v [--format=<format>] <tagname>..."
+  },
+  {
+    "name": "unpack-file",
+    "description": "Write a blob object to a temporary file.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git unpack-file <blob>"
+  },
+  {
+    "name": "unpack-objects",
+    "description": "Extract objects from a pack stream into repository storage.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git unpack-objects [-n] [-q] [-r] [--strict]"
+  },
+  {
+    "name": "update-index",
+    "description": "Modify index entries directly for advanced staging workflows.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git update-index\n\t     [--add] [--remove | --force-remove] [--replace]\n\t     [--refresh] [-q] [--unmerged] [--ignore-missing]\n\t     [(--cacheinfo <mode>,<object>,<file>)...]\n\t     [--chmod=(+|-)x]\n\t     [--[no-]assume-unchanged]\n\t     [--[no-]skip-worktree]\n\t     [--[no-]ignore-skip-worktree-entries]\n\t     [--[no-]fsmonitor-valid]\n\t     [--ignore-submodules]\n\t     [--[no-]split-index]\n\t     [--[no-|test-|force-]untracked-cache]\n\t     [--[no-]fsmonitor]\n\t     [--really-refresh] [--unresolve] [--again | -g]\n\t     [--info-only] [--index-info]\n\t     [-z] [--stdin] [--index-version <n>]\n\t     [--show-index-version]\n\t     [--verbose]\n\t     [--] [<file>...]"
+  },
+  {
+    "name": "update-ref",
+    "description": "Create, change, or delete references with optional transaction checks.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git update-ref [-m <reason>] [--no-deref] -d <ref> [<old-oid>]\ngit update-ref [-m <reason>] [--no-deref] [--create-reflog] <ref> <new-oid> [<old-oid>]\ngit update-ref [-m <reason>] [--no-deref] --stdin [-z] [--batch-updates]"
+  },
+  {
+    "name": "update-server-info",
+    "description": "Refresh auxiliary files used by simple remote transports.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git update-server-info [-f | --force]"
+  },
+  {
+    "name": "upload-archive",
+    "description": "Serve an archive request from a remote client.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git upload-archive <repository>"
+  },
+  {
+    "name": "upload-pack",
+    "description": "Prepare objects for clients fetching from a repository.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git-upload-pack [--[no-]strict] [--timeout=<n>] [--stateless-rpc]\n\t\t  [--advertise-refs] <directory>"
+  },
+  {
+    "name": "var",
+    "description": "Print Git’s resolved values for supported environment-related variables.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git var (-l | <variable>)"
+  },
+  {
+    "name": "verify-commit",
+    "description": "Validate cryptographic signatures attached to commits.",
+    "category": "internals",
+    "advanced": false,
+    "syntax": "git verify-commit [-v | --verbose] [--raw] <commit>..."
+  },
+  {
+    "name": "verify-pack",
+    "description": "Check a packfile and inspect its indexed objects.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git verify-pack [-v | --verbose] [-s | --stat-only] [--] <pack>.idx..."
+  },
+  {
+    "name": "verify-tag",
+    "description": "Validate cryptographic signatures attached to tags.",
+    "category": "internals",
+    "advanced": false,
+    "syntax": "git verify-tag [-v | --verbose] [--format=<format>] [--raw] <tag>..."
+  },
+  {
+    "name": "version",
+    "description": "Print the installed Git version and optional build details.",
+    "category": "setup",
+    "advanced": false,
+    "syntax": "git version [--build-options]"
+  },
+  {
+    "name": "whatchanged",
+    "description": "Inspect history using an older command; use git log for new workflows.",
+    "category": "history",
+    "advanced": false,
+    "syntax": "git whatchanged <option>..."
+  },
+  {
+    "name": "worktree",
+    "description": "Manage separate working directories attached to one repository.",
+    "category": "branches",
+    "advanced": false,
+    "syntax": "git worktree add [-f] [--detach] [--checkout] [--lock [--reason <string>]]\n\t\t [--orphan] [(-b | -B) <new-branch>] <path> [<commit-ish>]\ngit worktree list [-v | --porcelain [-z]]\ngit worktree lock [--reason <string>] <worktree>\ngit worktree move <worktree> <new-path>\ngit worktree prune [-n] [-v] [--expire <expire>]\ngit worktree remove [-f] <worktree>\ngit worktree repair [<path>...]\ngit worktree unlock <worktree>"
+  },
+  {
+    "name": "write-tree",
+    "description": "Store the current index as a tree object.",
+    "category": "internals",
+    "advanced": true,
+    "syntax": "git write-tree [--missing-ok] [--prefix=<prefix>/]"
+  }
+]

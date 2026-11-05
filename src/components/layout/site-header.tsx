@@ -13,6 +13,7 @@ export function SiteHeader() {
         <Link href="/guides">Browse guides</Link>
         <Link href="/rescue">Recovery</Link>
         <Link href="/#guide">Command reference</Link>
+        <Link href="/commands">All Git Commands</Link>
         <ThemeToggle />
       </nav>
     </header>
